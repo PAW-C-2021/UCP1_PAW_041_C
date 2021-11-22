@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ClothingStore.Models.Produk>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Data Produk</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Nama Produk")
+            </th>
+            <th>
+                @Html.DisplayName("Ukuran")
+            </th>
+            <th>
+                @Html.DisplayName("Brand")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaProduk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ukuran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdProduk"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdProduk"><i class="fas fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdProduk"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
